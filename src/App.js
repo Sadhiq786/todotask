@@ -228,7 +228,7 @@ function App() {
                   <div>
                     <h3>{item.title}</h3>
                     <p>{item.description}</p>
-                    <p><small>Completed on: {item.completedOn}</small></p>
+                    <p className='line'><small>Completed on: {item.completedOn}</small></p>
                   </div>
                   <div>
                     <AiOutlineDelete className='icon' onClick={() => handleDeleteCompleteTodo(index)} />

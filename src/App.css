@@ -14,7 +14,7 @@
     .todo-wrapper{
         background: #353434;
         padding: 2%;
-        width: fit-content;
+        width: 84%;
         margin-left: auto;
         margin-right: auto;
         margin-top: 3%;
@@ -27,6 +27,8 @@
     .todo-input{
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
         justify-content: center;
         border-bottom: 1px solid gray;
 
@@ -40,13 +42,13 @@
     
     .todo-input-item label{
         font-size: 10px;
-        margin-bottom: 10px;
+        margin-top: 10px;
     }
     
     .todo-input-item input{
         padding: 6px;
-        width: 80px;
-        height: 1px;
+        width: 150px;
+        height: 8px;
         font-size: 6px;
     }
     
@@ -55,7 +57,7 @@
         color: white;
         border-radius: 0px;
         padding: 4px 10px 4px 10px;
-        margin-top: 25px;
+        margin-top: 10px;
         border: none;
         cursor: pointer;
         font-size: 7px;
@@ -70,7 +72,9 @@
         background-color: rgba(124, 124, 124, 0.447);
         color: white;
         border: none;
-        margin-top: 25px;
+        display: block;
+        display: inline;
+        margin-top: 22px;
         padding: 5px;
         width: 30px;
         cursor: pointer;
@@ -115,15 +119,14 @@
         font-size: 7px;
         color: white;
         font-weight: bold;
-        margin: 0px;
+        margin-top: -3px;
     }
     
     .todo-list-item p{
         font-size: 8px;
         color: rgb(161, 161, 161);
-        margin-top: 8px;
+        margin-top: -7px;
     }
-    
     .icon{
         font-size: 10px;
         cursor: pointer;
