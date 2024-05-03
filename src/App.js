@@ -21,9 +21,8 @@ function App() {
       title: newTitle,
       description: newDescription
     };
-
-    let updatedTodoArr = [newTodoItem,...allTodos];
-    updatedTodoArr.push(newTodoItem);
+  
+    let updatedTodoArr = [newTodoItem, ...allTodos];
     setTodos(updatedTodoArr);
     localStorage.setItem("todolist", JSON.stringify(updatedTodoArr));
   };
@@ -116,7 +115,19 @@ function App() {
     setCurrentEdit("");
   };
 
-  useEffect(() => {
+// localstorage getting items
+useEffect(() => {
+  let savedTodo = JSON.parse(localStorage.getItem("todolist"));
+  let savedCompletedTodo = JSON.parse(localStorage.getItem("completedTodos"));
+  if (savedTodo) {
+    setTodos(savedTodo);
+  }
+
+  if (savedCompletedTodo) {
+    setCompletedTodos(savedCompletedTodo);
+  }
+  // Fetch data from API only if there's no data in local storage
+  if (!savedTodo) {
     axios.get("https://jsonplaceholder.typicode.com/todos")
       .then((res) => {
         setTodos(res.data);
@@ -124,7 +135,9 @@ function App() {
       .catch((error) => {
         console.error("Error", error);
       });
-  }, []);
+  }
+}, []);
+
 
 
 
