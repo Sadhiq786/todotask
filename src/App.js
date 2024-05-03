@@ -15,8 +15,12 @@ function App() {
   const [draggedTaskIndex, setDraggedTaskIndex] = useState(null);
 
 
-  // handleAddTodo
   const handleAddTodo = () => {
+
+    if (!newTitle.trim() || !newDescription.trim()) {
+      alert("Title and description cannot be empty");
+      return;
+    }
     let newTodoItem = {
       title: newTitle,
       description: newDescription
@@ -26,7 +30,7 @@ function App() {
     localStorage.setItem("todolist", JSON.stringify(updatedTodoArr));
   };
 
-  // delete
+
   const handleDeleteTodo = (index) => {
     let reducedTodo = [...allTodos];
     reducedTodo.splice(index, 1);
@@ -51,7 +55,6 @@ function App() {
     };
 
 
-    // Check if the task already exists in completedTodos
     if (!completedTodos.find((item) => item.title === filteredItem.title && item.description === filteredItem.description)) 
     {
       let updatedCompletedArr = [...completedTodos];
@@ -67,7 +70,6 @@ function App() {
     handleDeleteTodo(index);
   };
 
-  // delete (completed tasks)
   const handleDeleteCompleteTodo = (index) => {
     let reducedTodo = [...completedTodos];
     reducedTodo.splice(index, 1);
@@ -114,7 +116,7 @@ function App() {
     setCurrentEdit("");
   };
 
-// localstorage getting items
+
 useEffect(() => {
   let savedTodo = JSON.parse(localStorage.getItem("todolist"));
   let savedCompletedTodo = JSON.parse(localStorage.getItem("completedTodos"));
@@ -125,7 +127,6 @@ useEffect(() => {
   if (savedCompletedTodo) {
     setCompletedTodos(savedCompletedTodo);
   }
-  // Fetch data from API only if there's no data in local storage
   if (!savedTodo) {
     axios.get("https://jsonplaceholder.typicode.com/todos")
       .then((res) => {
@@ -139,8 +140,6 @@ useEffect(() => {
 
 
 
-
-  // drags
   const handleDragStart = (index) => {
     setDraggedTaskIndex(index);
   };
@@ -209,7 +208,6 @@ useEffect(() => {
                 );
               } else {
                 return (
-                  // <div className='todo-list-item' key={index}>
                   <div
                       key={index}
                       className='todo-list-item'
