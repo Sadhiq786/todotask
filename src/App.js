@@ -21,7 +21,6 @@ function App() {
       title: newTitle,
       description: newDescription
     };
-  
     let updatedTodoArr = [newTodoItem, ...allTodos];
     setTodos(updatedTodoArr);
     localStorage.setItem("todolist", JSON.stringify(updatedTodoArr));
